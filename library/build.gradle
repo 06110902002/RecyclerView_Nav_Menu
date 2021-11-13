@@ -1,0 +1,33 @@
+apply plugin: 'com.android.library'
+apply from: rootProject.file('release-bintray.gradle')
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+    implementation deps.recycler
+    implementation deps.annotations
+
+    testImplementation testDeps.robolectric
+    testImplementation testDeps.jUnit
+    testImplementation testDeps.mockito
+    testImplementation testDeps.hamcrest
+
+    debugImplementation deps.androidxCompat
+    androidTestImplementation testDeps.espresso
+    androidTestImplementation testDeps.androidJUnit
+    androidTestImplementation testDeps.testRunner
+    androidTestImplementation testDeps.testRules
+    androidTestImplementation testDeps.hamcrest
+}
